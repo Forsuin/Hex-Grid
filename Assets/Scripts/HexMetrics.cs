@@ -81,10 +81,6 @@ public static class HexMetrics {
         {
 			x += hashGridSize;
         }
-		//TODO: Remove loggers
-		Debug.Log("Position.x = " + position.x + " " + "X = " + x);
-		Debug.Log("Position.z = " + position.z + " " + "Z = " + z);
-		Debug.Log("hashGrid[x + z * hashGridSize] = " + hashGrid[x + z * hashGridSize]);
 		return hashGrid[x + z * hashGridSize];
     }
 
