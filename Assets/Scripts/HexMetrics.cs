@@ -57,6 +57,18 @@ public static class HexMetrics {
 
 	public const float hashGridScale = 0.25f;
 
+	static float[][] featureThreshold =
+	{
+		new float[] {0.0f, 0.0f, 0.4f },
+		new float[] {0.0f, 0.4f, 0.6f },
+		new float[] {0.4f, 0.6f, 0.8f }
+	};
+
+	public static float[] GetFeatureThresholds(int level)
+    {
+		return featureThreshold[level];
+    }
+
 	public static void InitializeHashGrid(int seed)
     {
 		hashGrid = new HexHash[hashGridSize * hashGridSize];
