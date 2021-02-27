@@ -9,7 +9,7 @@ public class HexMapEditor : MonoBehaviour {
 
 	int activeElevation;
 	int activeWaterLevel;
-	int activeUrbanLevel, activeFarmLevel, activePlantLevel;
+	int activeUrbanLevel, activeFarmLevel, activePlantLevel, activeSpecialIndex;
 
 	Color activeColor;
 
@@ -18,7 +18,7 @@ public class HexMapEditor : MonoBehaviour {
 	bool applyColor;
 	bool applyElevation = true;
 	bool applyWaterLevel = true;
-	bool applyUrbanLevel, applyFarmLevel, applyPlantLevel;
+	bool applyUrbanLevel, applyFarmLevel, applyPlantLevel, applySpecialIndex;
 
 	enum OptionalToggle {
 		Ignore, Yes, No
@@ -100,6 +100,15 @@ public class HexMapEditor : MonoBehaviour {
 		walledMode = (OptionalToggle)mode;
     }
 
+	public void SetApplySpecialIndex(bool toggle)
+    {
+		applySpecialIndex = toggle;
+    }
+
+	public void SetSpecialIndex(float index)
+    {
+		activeSpecialIndex = (int)index;
+    }
 
 	public void ShowUI (bool visible) {
 		hexGrid.ShowUI(visible);
@@ -179,8 +188,8 @@ public class HexMapEditor : MonoBehaviour {
 				cell.Elevation = activeElevation;
 			}
 			if (applyWaterLevel) {
-				cell.WaterLevel = activeWaterLevel;
-			}
+				cell.WaterLevel = activeWaterLevel; 
+  			}
 			if (applyUrbanLevel)
 			{
 				cell.UrbanLevel = activeUrbanLevel;
@@ -192,6 +201,10 @@ public class HexMapEditor : MonoBehaviour {
             if (applyPlantLevel)
             {
 				cell.PlantLevel = activePlantLevel;
+            }
+            if (applySpecialIndex)
+            {
+				cell.SpecialIndex = activeSpecialIndex ;
             }
 			if (riverMode == OptionalToggle.No) {
 				cell.RemoveRiver();
